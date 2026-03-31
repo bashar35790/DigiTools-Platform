@@ -1,7 +1,11 @@
 import React from 'react'
+import Navbar from './component/navbar/Navbar'
 
 export default function App() {
   return (
-    <h1>Hellow world</h1>
+    <main>
+      <Navbar></Navbar>
+    </main>
   )
 }
+
