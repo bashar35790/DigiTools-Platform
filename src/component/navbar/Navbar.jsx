@@ -3,6 +3,7 @@ import Logo from "../../assets/logo.png";
 import { CiShoppingCart } from "react-icons/ci";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
+import Button from "../../utility/Button";
 
 export default function Navbar() {
   const [active, setActive] = useState(false);
@@ -73,9 +74,7 @@ export default function Navbar() {
             <div className="navbar-end gap-4 hidden lg:flex">
               <CiShoppingCart className="text-2xl cursor-pointer" />
               <a className="cursor-pointer">Login</a>
-              <a className="btn bg-linear-to-r from-brand2 to-brand1 rounded-full text-white">
-                Get Started
-              </a>
+              <Button title="Get Started"></Button>
             </div>
           </div>
         </div>
