@@ -5,10 +5,15 @@ import Cart from '../../utility/Cart';
 
 
 
-export default function Products({ cardDataPromise }) {
+export default function Products({
+    cardDataPromise,
+    cart,
+    onAddToCart,
+    onRemoveFromCart,
+    activeView,
+    setActiveView
+}) {
     const cards = use(cardDataPromise);
-    const [isSelected, setIsSelected] = useState("available");
-
 
     return (
         <>
@@ -20,23 +25,39 @@ export default function Products({ cardDataPromise }) {
                         <p className=' text-bodyText'>Choose from our curated collection of premium digital products designed <br />to boost your productivity and creativity.</p>
 
                         {/* buttons  */}
-                        <div className=' p-2 shadow-xs rounded-full w-fit mx-auto space-x-2'>
-                            <a onClick={() => setIsSelected("available")} className={`btn ${isSelected == "available" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : ""} rounded-full border-none`}>
+                        <div className=' p-2 shadow-xs rounded-full w-fit mx-auto space-x-2 bg-gray-50/50 backdrop-blur-sm'>
+                            <button
+                                onClick={() => setActiveView("available")}
+                                className={`btn ${activeView === "available" ? "bg-linear-to-l from-brand2 to-brand1 text-white shadow-lg" : "hover:bg-gray-100"} rounded-full border-none transition-all duration-300`}
+                            >
                                 All Products
-                            </a>
-                            <a onClick={() => setIsSelected("cart")} className={`btn ${isSelected == "cart" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : ""} rounded-full border-none`}>
-                                Cart
-                            </a>
+                            </button>
+                            <button
+                                onClick={() => setActiveView("cart")}
+                                className={`btn ${activeView === "cart" ? "bg-linear-to-l from-brand2 to-brand1 text-white shadow-lg" : "hover:bg-gray-100"} rounded-full border-none transition-all duration-300`}
+                            >
+                                Cart {cart.length > 0 && `(${cart.length})`}
+                            </button>
                         </div>
                     </div>
                     {/* card container  */}
                     {
-                      isSelected == "available"?
-                    <div className='grid grid-cols-3 gap-8'>
-                        {
-                            cards.map(card => <Product key={card.id} card={card}></Product>)
-                        }
-                    </div>: <Cart></Cart>
+                        activeView === "available" ?
+                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+                                {
+                                    cards.map(card => {
+                                        const cartItem = cart.find(item => item.id === card.id);
+                                        return (
+                                            <Product
+                                                key={card.id}
+                                                card={card}
+                                                count={cartItem ? cartItem.quantity : 0}
+                                                onAddToCart={() => onAddToCart(card)}
+                                            />
+                                        );
+                                    })
+                                }
+                            </div> : <Cart cart={cart} onRemoveFromCart={onRemoveFromCart} setActiveView={setActiveView} />
                     }
                 </div>
             </section>

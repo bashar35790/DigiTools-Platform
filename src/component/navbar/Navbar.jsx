@@ -5,18 +5,18 @@ import { CgMenuRightAlt } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
 import Button from "../../utility/Button";
 
-export default function Navbar() {
+export default function Navbar({ cartCount, setActiveView }) {
   const [active, setActive] = useState(true);
 
   return (
     <>
-      <nav>
+      <nav className="sticky top-0 z-50">
         <div className="navbar bg-base-100 shadow-sm">
           <div className="flex justify-between container mx-auto px-5">
             {/* logo */}
             <div className="flex flex-col md:flex-row justify-between max-md:w-full md:navbar-start ">
               <div className="flex justify-between">
-                <img src={Logo} alt="logo" className="w-44 h-10 cursor-pointer" />
+                <img onClick={() => setActiveView("available")} src={Logo} alt="logo" className="w-44 h-10 cursor-pointer" />
                 {/* Menu bar  */}
                 <div
                   onClick={() => setActive(!active)}
@@ -30,10 +30,10 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className={`navbar-center flex flex-col md:hidden absolute right-2 -top-50  ${!active && " visible top-15"} transition-all duration-300 ease-in-out bg-white`}>
+              <div className={`navbar-center flex flex-col md:hidden absolute right-2 -top-50  ${!active && " visible top-15"} transition-all duration-300 ease-in-out bg-white p-4 shadow-lg rounded-xl`}>
                 <ul className="menu flex-col px-1">
                   <li>
-                    <a href="#">Products</a>
+                    <a onClick={() => { setActiveView("available"); setActive(true); }} href="#">Products</a>
                   </li>
                   <li>
                     <a href="#">Features</a>
@@ -54,7 +54,7 @@ export default function Navbar() {
             <div className="navbar-center hidden lg:flex">
               <ul className="menu menu-horizontal px-1">
                 <li>
-                  <a href="#">Products</a>
+                  <a onClick={() => setActiveView("available")} href="#">Products</a>
                 </li>
                 <li>
                   <a href="#">Features</a>
@@ -72,11 +72,20 @@ export default function Navbar() {
             </div>
             {/* end buttons  */}
             <div className="navbar-end gap-4 hidden lg:flex">
-              <div className="w-fit h-fit relative">
-              <CiShoppingCart className="text-2xl cursor-pointer" />
-              <span className="badge badge-sm indicator-item absolute -top-4 -right-4 shadow-sm shadow-brand1 text-brand2 hidden">0</span>
+              <div
+                onClick={() => setActiveView("cart")}
+                className="w-fit h-fit relative group cursor-pointer"
+              >
+                <div className="p-2 rounded-full hover:bg-gray-100 transition-colors">
+                  <CiShoppingCart className="text-2xl" />
+                </div>
+                {cartCount > 0 && (
+                  <span className="badge badge-sm indicator-item absolute -top-1 -right-1 bg-brand2 text-white border-none shadow-sm animate-bounce">
+                    {cartCount}
+                  </span>
+                )}
               </div>
-              <a className="cursor-pointer">Login</a>
+              <a className="cursor-pointer hover:text-brand1 transition-colors">Login</a>
               <Button title="Get Started"></Button>
             </div>
           </div>

@@ -96,7 +96,7 @@ export default function Pricing() {
                                                 }
                                             </ul>
                                             <div className="">
-                                                <Button title={card.buttonText} addStyle={`w-full ${card.tag && "bg-white"}`}></Button>
+                                                <Button title={card.buttonText} addStyle={`w-full`}></Button>
                                             </div>
                                         </div>
                                     </div>
