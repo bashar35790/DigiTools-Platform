@@ -18,47 +18,51 @@ export default function Products({
     return (
         <>
             <section className='py-20'>
-                <div className="container px-5 space-y-10 mx-auto">
+                <div className="container px-6 space-y-16 mx-auto">
                     {/* heading text  */}
-                    <div className='space-y-4 text-center'>
-                        <h2 className='text-5xl font-extrabold text-heading'>Premium Digital Tools</h2>
-                        <p className=' text-bodyText'>Choose from our curated collection of premium digital products designed <br />to boost your productivity and creativity.</p>
+                    <div className='space-y-6 text-center max-w-3xl mx-auto'>
+                        <h2 className='text-4xl md:text-5xl lg:text-6xl font-extrabold text-heading leading-tight'>Premium Digital Tools</h2>
+                        <p className='text-lg text-bodyText leading-relaxed'>Choose from our curated collection of premium digital products designed to boost your productivity and creativity.</p>
 
-                        {/* buttons  */}
-                        <div className=' p-2 shadow-xs rounded-full w-fit mx-auto space-x-2 bg-gray-50/50 backdrop-blur-sm'>
+                        {/* View Toggle Buttons */}
+                        <div className='p-1.5 shadow-sm rounded-full w-fit mx-auto flex items-center bg-gray-100/50 backdrop-blur-sm border border-gray-100'>
                             <button
                                 onClick={() => setActiveView("available")}
-                                className={`btn ${activeView === "available" ? "bg-linear-to-l from-brand2 to-brand1 text-white shadow-lg" : "hover:bg-gray-100"} rounded-full border-none transition-all duration-300`}
+                                className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${activeView === "available" ? "bg-white text-brand1 shadow-md" : "text-gray-500 hover:text-brand1"}`}
                             >
                                 All Products
                             </button>
                             <button
                                 onClick={() => setActiveView("cart")}
-                                className={`btn ${activeView === "cart" ? "bg-linear-to-l from-brand2 to-brand1 text-white shadow-lg" : "hover:bg-gray-100"} rounded-full border-none transition-all duration-300`}
+                                className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeView === "cart" ? "bg-white text-brand1 shadow-md" : "text-gray-500 hover:text-brand1"}`}
                             >
-                                Cart {cart.length > 0 && `(${cart.length})`}
+                                Cart {cart.length > 0 && <span className="bg-brand1 text-white text-[10px] h-5 w-5 rounded-full flex items-center justify-center">{cart.length}</span>}
                             </button>
                         </div>
                     </div>
-                    {/* card container  */}
-                    {
-                        activeView === "available" ?
-                            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-                                {
-                                    cards.map(card => {
-                                        const cartItem = cart.find(item => item.id === card.id);
-                                        return (
-                                            <Product
-                                                key={card.id}
-                                                card={card}
-                                                count={cartItem ? cartItem.quantity : 0}
-                                                onAddToCart={() => onAddToCart(card)}
-                                            />
-                                        );
-                                    })
-                                }
-                            </div> : <Cart cart={cart} onRemoveFromCart={onRemoveFromCart} setActiveView={setActiveView} />
-                    }
+
+                    {/* Content Container */}
+                    <div className="animate-fade-in">
+                        {activeView === "available" ? (
+                            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+                                {cards.map(card => {
+                                    const cartItem = cart.find(item => item.id === card.id);
+                                    return (
+                                        <Product
+                                            key={card.id}
+                                            card={card}
+                                            count={cartItem ? cartItem.quantity : 0}
+                                            onAddToCart={() => onAddToCart(card)}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <div className="max-w-4xl mx-auto">
+                                <Cart cart={cart} onRemoveFromCart={onRemoveFromCart} setActiveView={setActiveView} />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </section>
         </>

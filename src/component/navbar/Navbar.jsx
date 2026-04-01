@@ -10,84 +10,101 @@ export default function Navbar({ cartCount, setActiveView }) {
 
   return (
     <>
-      <nav className="sticky top-0 z-50">
-        <div className="navbar bg-base-100 shadow-sm">
-          <div className="flex justify-between container mx-auto px-5">
-            {/* logo */}
-            <div className="flex flex-col md:flex-row justify-between max-md:w-full md:navbar-start ">
-              <div className="flex justify-between">
-                <img onClick={() => setActiveView("available")} src={Logo} alt="logo" className="w-44 h-10 cursor-pointer" />
-                {/* Menu bar  */}
-                <div
-                  onClick={() => setActive(!active)}
-                  className="w-fit h-fit cursor-pointer md:hidden"
-                >
-                  {active ? (
-                    <CgMenuRightAlt className="w-6 h-6" />
-                  ) : (
-                    <IoClose className="w-6 h-6" />
-                  )}
-                </div>
-              </div>
-
-              <div className={`navbar-center flex flex-col md:hidden absolute right-2 -top-50  ${!active && " visible top-15"} transition-all duration-300 ease-in-out bg-white p-4 shadow-lg rounded-xl`}>
-                <ul className="menu flex-col px-1">
-                  <li>
-                    <a onClick={() => { setActiveView("available"); setActive(true); }} href="#">Products</a>
-                  </li>
-                  <li>
-                    <a href="#">Features</a>
-                  </li>
-                  <li>
-                    <a href="#">Pricing</a>
-                  </li>
-                  <li>
-                    <a href="#">Testimonials</a>
-                  </li>
-                  <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                </ul>
+      <nav className="sticky top-0 z-50 bg-base-100/80 backdrop-blur-md border-b border-gray-100">
+        <div className="container mx-auto">
+          <div className="navbar justify-between px-4 lg:px-8 h-20">
+            {/* Left Side: Logo & Mobile Toggle */}
+            <div className="navbar-start w-auto">
+              <div className="flex items-center gap-4">
+                <img
+                  onClick={() => setActiveView("available")}
+                  src={Logo}
+                  alt="logo"
+                  className="w-32 md:w-44 h-auto cursor-pointer object-contain"
+                />
               </div>
             </div>
-            {/* middle nav links  */}
+
+            {/* Desktop Navigation */}
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">
+              <ul className="flex items-center gap-8 font-medium text-heading">
                 <li>
-                  <a onClick={() => setActiveView("available")} href="#">Products</a>
+                  <a onClick={() => setActiveView("available")} href="#" className="hover:text-brand1 transition-colors">Products</a>
                 </li>
                 <li>
-                  <a href="#">Features</a>
+                  <a href="#" className="hover:text-brand1 transition-colors">Features</a>
                 </li>
                 <li>
-                  <a href="#">Pricing</a>
+                  <a href="#" className="hover:text-brand1 transition-colors">Pricing</a>
                 </li>
                 <li>
-                  <a href="#">Testimonials</a>
+                  <a href="#" className="hover:text-brand1 transition-colors">Testimonials</a>
                 </li>
                 <li>
-                  <a href="#">FAQ</a>
+                  <a href="#" className="hover:text-brand1 transition-colors">FAQ</a>
                 </li>
               </ul>
             </div>
-            {/* end buttons  */}
-            <div className="navbar-end gap-4 hidden lg:flex">
+
+            {/* Right Side: Cart & Actions */}
+            <div className="navbar-end w-auto flex items-center gap-2 md:gap-4">
               <div
                 onClick={() => setActiveView("cart")}
-                className="w-fit h-fit relative group cursor-pointer"
+                className="relative group cursor-pointer p-2 rounded-full hover:bg-gray-100 transition-all active:scale-95"
               >
-                <div className="p-2 rounded-full hover:bg-gray-100 transition-colors">
-                  <CiShoppingCart className="text-2xl" />
-                </div>
+                <CiShoppingCart className="text-2xl md:text-3xl text-heading" />
                 {cartCount > 0 && (
-                  <span className="badge badge-sm indicator-item absolute -top-1 -right-1 bg-brand2 text-white border-none shadow-sm animate-bounce">
+                  <span className="absolute -top-1 -right-1 bg-brand2 text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center shadow-sm animate-bounce">
                     {cartCount}
                   </span>
                 )}
               </div>
-              <a className="cursor-pointer hover:text-brand1 transition-colors">Login</a>
-              <Button title="Get Started"></Button>
+
+              <div className="hidden sm:flex items-center gap-4">
+                <a className="cursor-pointer font-medium text-heading hover:text-brand1 transition-colors">Login</a>
+                <Button title="Get Started" addStyle="hidden md:flex"></Button>
+              </div>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setActive(!active)}
+                className="lg:hidden p-2 rounded-xl bg-gray-50 text-heading active:scale-95 transition-all"
+              >
+                {active ? (
+                  <CgMenuRightAlt className="w-6 h-6" />
+                ) : (
+                  <IoClose className="w-6 h-6" />
+                )}
+              </button>
             </div>
+          </div>
+
+          {/* Mobile Navigation Menu */}
+          <div
+            className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out bg-white border-t border-gray-50 ${!active ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"
+              }`}
+          >
+            <ul className="flex flex-col gap-4 px-6 font-medium text-heading">
+              <li>
+                <a onClick={() => { setActiveView("available"); setActive(true); }} href="#" className="block py-2">Products</a>
+              </li>
+              <li>
+                <a href="#" className="block py-2">Features</a>
+              </li>
+              <li>
+                <a href="#" className="block py-2">Pricing</a>
+              </li>
+              <li>
+                <a href="#" className="block py-2">Testimonials</a>
+              </li>
+              <li>
+                <a href="#" className="block py-2">FAQ</a>
+              </li>
+              <li className="pt-4 flex flex-col gap-4 sm:hidden">
+                <a className="cursor-pointer text-center py-3 rounded-xl border border-gray-200">Login</a>
+                <Button title="Get Started" addStyle="w-full"></Button>
+              </li>
+            </ul>
           </div>
         </div>
       </nav>

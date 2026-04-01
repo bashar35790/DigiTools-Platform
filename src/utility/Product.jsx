@@ -13,45 +13,66 @@ export default function Product({ card, count, onAddToCart }) {
 
     return (
         <>
-            <div className="card shadow-sm hover:shadow-xl transition-all duration-300 relative group border border-gray-100">
-                <div className="card-body relative justify-between">
+            <div className="card bg-white shadow-sm hover:shadow-2xl transition-all duration-500 group border border-gray-100/50 rounded-2xl overflow-hidden flex flex-col h-full">
+                <div className="card-body p-6 lg:p-8 flex flex-col justify-between h-full relative">
                     {/* Count Badge */}
                     {count > 0 && (
-                        <div className="absolute -top-3 -left-3 bg-brand2 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold shadow-lg z-10 animate-scale-in">
+                        <div className="absolute -top-3 -left-3 bg-brand2 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-xl z-20 animate-scale-in border-4 border-white">
                             {count}
                         </div>
                     )}
 
-                    <span className={`badge badge-xs ${card.tag == "Popular" && "bg-[#E1E7FF] text-brand1" || card.tag == "Best Seller" && "bg-[#FEF3C6] text-[#BB4D00]"
-                        || card.tag == "New" && "bg-[#DBFCE7] text-[#0A883E]"
-                        }  p-3 rounded-full absolute top-2.5 right-2.5`}>{card.tag}</span>
-
-                    {/* card content start  */}
-                    <div className="flex flex-col justify-between gap-4">
-                        <div className='p-3 shadow-xs w-fit rounded-full bg-gray-50 group-hover:scale-110 transition-transform duration-300'>
-                            <img src={card.icon} alt="desing" className='w-8 h-8' />
-                        </div>
-                        <h2 className="text-2xl font-bold text-heading">{card.name}</h2>
-                        <span className=" text-bodyText leading-relaxed">{card.description}</span>
-                        <h2 className="text-2xl font-bold text-heading">${card.price} <span className='text-[16px] text-bodyText font-normal'>/{card.period}</span></h2>
+                    {/* Tag Badge */}
+                    <div className="absolute top-4 right-4 z-10">
+                        <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${card.tag === "Popular" ? "bg-brand1/10 text-brand1" :
+                                card.tag === "Best Seller" ? "bg-amber-100 text-amber-600" :
+                                    "bg-emerald-100 text-emerald-600"
+                            }`}>
+                            {card.tag}
+                        </span>
                     </div>
-                    <ul className="mt-6 flex flex-col gap-2 text-bodyText">
-                        {card?.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 text-success shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                                </svg>
-                                <span className="text-sm">{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="mt-6">
+
+                    <div className="space-y-6">
+                        {/* Icon Container */}
+                        <div className='p-4 shadow-sm w-fit rounded-2xl bg-gray-50 group-hover:bg-brand1/5 group-hover:scale-110 transition-all duration-500'>
+                            <img src={card.icon} alt={card.name} className='w-10 h-10 object-contain' />
+                        </div>
+
+                        {/* Text Content */}
+                        <div className="space-y-3">
+                            <h2 className="text-2xl font-bold text-heading group-hover:text-brand1 transition-colors">{card.name}</h2>
+                            <p className="text-bodyText leading-relaxed line-clamp-2 text-sm">{card.description}</p>
+                        </div>
+
+                        {/* Price */}
+                        <div className="flex items-baseline gap-1">
+                            <span className="text-3xl font-extrabold text-heading">${card.price}</span>
+                            <span className='text-sm text-bodyText font-medium'>/{card.period}</span>
+                        </div>
+
+                        {/* Features List */}
+                        <ul className="space-y-3 pt-2">
+                            {card?.features.map((feature, idx) => (
+                                <li key={idx} className="flex items-start gap-3">
+                                    <div className="mt-1 shrink-0 rounded-full bg-emerald-100 p-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="size-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                    </div>
+                                    <span className="text-sm text-heading/80 font-medium">{feature}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Action Button */}
+                    <div className="mt-8 pt-4 border-t border-gray-50">
                         <Button
                             onClick={handleBuyNow}
                             active={active}
-                            title="Buy Now"
+                            title="Add to Cart"
                             title2="Added to Cart"
-                            addStyle="w-full"
+                            addStyle="w-full py-4 font-bold"
                         />
                     </div>
                 </div>

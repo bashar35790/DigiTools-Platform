@@ -39,7 +39,7 @@ export default function App() {
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <main>
+    <main className="min-h-screen bg-white">
       <Navbar cartCount={cartCount} setActiveView={setActiveView}></Navbar>
       {activeView === "available" && (
         <>

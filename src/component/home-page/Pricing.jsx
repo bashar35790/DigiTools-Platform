@@ -61,49 +61,63 @@ export default function Pricing() {
     return (
         <>
             <section className='py-20'>
-                <div className="container px-5 space-y-10 mx-auto">
+                <div className="container px-6 space-y-16 mx-auto">
                     {/* heading text  */}
-                    <div className='space-y-4 text-center'>
-                        <h2 className='text-5xl font-extrabold text-heading'>Simple, Transparent Pricing</h2>
-                        <p className=' text-bodyText'>Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
+                    <div className='space-y-4 text-center max-w-2xl mx-auto'>
+                        <h2 className='text-4xl md:text-5xl font-extrabold text-heading'>Simple, Transparent Pricing</h2>
+                        <p className='text-lg text-bodyText'>Choose the plan that fits your needs. Upgrade or downgrade anytime.</p>
                     </div>
                     {/* card container  */}
-                    <div className='flex gap-8 max-md:flex-wrap'>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                         {
                             PricingData.map(card => {
                                 return (
-                                    <div className={`card bg-[#F9FAFC] shadow-sm w-full text-heading ${card.tag ? "bg-linear-to-r from-brand1 to-brand2 text-white" : ""}`} key={card.id}>
-                                        <div className="card-body relative space-y-6 justify-between">
-                                            <span className={`badge p-3 bg-[#FEF3C6] text-[#BB4D00] rounded-full absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 ${card.tag ? " visible" : " hidden"}`}>
-                                                {card.tag}
-                                            </span>
-                                            <div className="flex flex-col">
-                                                <h2 className="text-2xl font-bold ">{card.name}</h2>
-                                                <span className="">{card.description}</span>
+                                    <div className={`card overflow-hidden transition-all duration-300 hover:shadow-xl ${card.tag ? "bg-linear-to-br from-brand1 to-brand2 text-white scale-105 z-10 shadow-xl" : "bg-[#F9FAFC] text-heading border border-gray-100"}`} key={card.id}>
+                                        <div className="card-body relative p-8 lg:p-10 space-y-6 flex flex-col justify-between h-full">
+                                            {card.tag && (
+                                                <span className="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
+                                                    {card.tag}
+                                                </span>
+                                            )}
+
+                                            <div className="space-y-4">
+                                                <div>
+                                                    <h2 className="text-2xl font-bold">{card.name}</h2>
+                                                    <p className={`text-sm ${card.tag ? "text-white/80" : "text-bodyText"}`}>{card.description}</p>
+                                                </div>
+
+                                                <div className="flex items-baseline gap-1">
+                                                    <span className="text-4xl font-extrabold">${card.price}</span>
+                                                    <span className={`text-sm ${card.tag ? "text-white/80" : "text-bodyText"}`}>/{card.period}</span>
+                                                </div>
+
+                                                <ul className="space-y-3 pt-4">
+                                                    {
+                                                        card.features.map((feature, index) => (
+                                                            <li key={index} className="flex items-center gap-3">
+                                                                <div className={`shrink-0 rounded-full p-1 ${card.tag ? "bg-white/20" : "bg-success/10"}`}>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" className={`size-3 ${card.tag ? "text-white" : "text-success"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                                                                    </svg>
+                                                                </div>
+                                                                <span className="text-sm font-medium">{feature}</span>
+                                                            </li>
+                                                        ))
+                                                    }
+                                                </ul>
                                             </div>
 
-                                            <div className="flex items-end">
-                                                <h2 className="text-4xl font-bold ">${card.price}</h2>
-                                                <span className="">/{card.period}</span>
-                                            </div>
-
-                                            <ul className=" flex flex-col gap-2 ">
-                                                {
-                                                    card.features.map((single, index) => <li key={index}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-                                                        <span>{single}</span>
-                                                    </li>)
-                                                }
-                                            </ul>
-                                            <div className="">
-                                                <Button title={card.buttonText} addStyle={`w-full`}></Button>
+                                            <div className="pt-6">
+                                                <Button
+                                                    title={card.buttonText}
+                                                    addStyle={`w-full py-4 text-lg ${card.tag ? "bg-white text-brand1 hover:bg-gray-50 border-none" : ""}`}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                 )
                             })
                         }
-
                     </div>
                 </div>
             </section>
