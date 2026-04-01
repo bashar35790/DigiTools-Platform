@@ -1,33 +1,15 @@
 import React from 'react';
 import Button from './Button';
 
-export default function Product({card}) {card
-    console.log(card);
-
-
-//     {
-//     "id": 1,
-//     "name": "AI Writing Pro",
-//     "description": "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
-//     "price": 29,
-//     "period": "monthly",
-//     "tag": null,
-//     "tagType": null,
-//     "features": [
-//         "Unlimited AI generations",
-//         "50+ writing templates",
-//         "Grammar checker"
-//     ],
-//     "icon": "Sparkles"
-// }
+export default function Product({ card }) {
 
     return (
         <>
             <div className="card shadow-sm">
                 <div className="card-body relative justify-between">
-                    <span className={`badge badge-xs ${card.tag=="Popular"&& "bg-[#E1E7FF] text-brand1" || card.tag=="Best Seller"&&"bg-[#FEF3C6] text-[#BB4D00]"
-                        || card.tag =="New"&& "bg-[#DBFCE7] text-[#0A883E]"
-                    }  p-3 rounded-full absolute top-2.5 right-2.5`}>{card.tag}</span>
+                    <span className={`badge badge-xs ${card.tag == "Popular" && "bg-[#E1E7FF] text-brand1" || card.tag == "Best Seller" && "bg-[#FEF3C6] text-[#BB4D00]"
+                        || card.tag == "New" && "bg-[#DBFCE7] text-[#0A883E]"
+                        }  p-3 rounded-full absolute top-2.5 right-2.5`}>{card.tag}</span>
 
                     {/* card content start  */}
                     <div className="flex flex-col justify-between gap-4">
@@ -38,7 +20,7 @@ export default function Product({card}) {card
                         <span className=" text-bodyText">{card.description}</span>
                         <h2 className="text-2xl font-bold text-heading">{card.price} <span className='text-[16px] text-bodyText font-normal'>/{card.period}</span></h2>
                     </div>
-                    <ul className="mt-6 flex flex-col gap-2 text-xs">
+                    <ul className="mt-6 flex flex-col gap-2 text-bodyText">
                         <li>
                             <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
                             <span>{card?.features[0]}</span>

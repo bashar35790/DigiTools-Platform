@@ -4,6 +4,7 @@ import Hero from './component/home-page/Hero'
 import Statistic from './component/home-page/Statistic'
 import Products from './component/home-page/Products'
 import Getstart from './component/home-page/Getstart'
+import Pricing from './component/home-page/Pricing'
 
 const cardDataLoade = async () => {
   const res = await fetch("data.json");
@@ -23,6 +24,7 @@ export default function App() {
         <Products cardDataPromise={cardDataPromise}></Products>
       </Suspense>
       <Getstart></Getstart>
+      <Pricing></Pricing>
     </main>
   )
 }

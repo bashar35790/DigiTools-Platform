@@ -7,7 +7,7 @@ import Product from '../../utility/Product';
 
 export default function Products({cardDataPromise}) {
     const cards = use(cardDataPromise);
-    console.log(cards)
+
 
     return (
         <>
