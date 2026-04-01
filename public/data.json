@@ -5,14 +5,14 @@
     "description": "Generate high-quality content, blogs, and marketing copy in seconds with advanced AI.",
     "price": 29,
     "period": "monthly",
-    "tag": null,
-    "tagType": null,
+    "tag": "Popular",
+    "tagType": "popular",
     "features": [
       "Unlimited AI generations",
       "50+ writing templates",
       "Grammar checker"
     ],
-    "icon": "Sparkles"
+    "icon": "../src/assets/products/writing.png"
   },
   {
     "id": 2,
@@ -27,7 +27,7 @@
       "Monthly updates",
       "Commercial license"
     ],
-    "icon": "Palette"
+    "icon": "../src/assets/products/design-tool.png"
   },
   {
     "id": 3,
@@ -42,7 +42,7 @@
       "Commercial use",
       "No attribution"
     ],
-    "icon": "Image"
+    "icon": "../src/assets/products/shopping-cart.png"
   },
   {
     "id": 4,
@@ -50,14 +50,14 @@
     "description": "Automate repetitive tasks and streamline your workflow with powerful tools.",
     "price": 79,
     "period": "monthly",
-    "tag": null,
-    "tagType": null,
+    "tag": "Popular",
+    "tagType": "popular",
     "features": [
       "50+ automations",
       "API access",
       "Custom workflows"
     ],
-    "icon": "Bot"
+    "icon": "../src/assets/products/operation.png"
   },
   {
     "id": 5,
@@ -72,7 +72,7 @@
       "Scheduler included",
       "Analytics dashboard"
     ],
-    "icon": "Share2"
+    "icon": "../src/assets/products/social-media.png"
   },
   {
     "id": 6,
@@ -87,6 +87,6 @@
       "Competitor analysis",
       "SEO content audit"
     ],
-    "icon": "TrendingUp"
+    "icon": "../src/assets/products/portfolio.png"
   }
 ]
