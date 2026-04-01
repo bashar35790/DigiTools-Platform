@@ -35,7 +35,7 @@ export default function Product({ card }) {
                         </li>
                     </ul>
                     <div className="mt-6">
-                        <Button title="Buy Now" addStyle="w-full"></Button>
+                        <Button title="Buy Now" title2="Added to the Cart" addStyle="w-full"></Button>
                     </div>
                 </div>
             </div>

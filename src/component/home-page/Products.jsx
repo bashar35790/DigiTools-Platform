@@ -1,12 +1,13 @@
-import React, { use } from 'react'
-import Button from '../../utility/Button';
+import React, { use, useState } from 'react'
 import Product from '../../utility/Product';
+import Cart from '../../utility/Cart';
 
 
 
 
-export default function Products({cardDataPromise}) {
+export default function Products({ cardDataPromise }) {
     const cards = use(cardDataPromise);
+    const [isSelected, setIsSelected] = useState("available");
 
 
     return (
@@ -20,16 +21,23 @@ export default function Products({cardDataPromise}) {
 
                         {/* buttons  */}
                         <div className=' p-2 shadow-xs rounded-full w-fit mx-auto space-x-2'>
-                            <Button title="Products"></Button>
-                            <button className='px-4 py-2 rounded-full'>Cart </button>
+                            <a onClick={() => setIsSelected("available")} className={`btn ${isSelected == "available" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : ""} rounded-full border-none`}>
+                                All Products
+                            </a>
+                            <a onClick={() => setIsSelected("cart")} className={`btn ${isSelected == "cart" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : ""} rounded-full border-none`}>
+                                Cart
+                            </a>
                         </div>
                     </div>
                     {/* card container  */}
+                    {
+                      isSelected == "available"?
                     <div className='grid grid-cols-3 gap-8'>
                         {
-                            cards.map(card =>  <Product key={card.id} card={card}></Product>  )
+                            cards.map(card => <Product key={card.id} card={card}></Product>)
                         }
-                    </div>
+                    </div>: <Cart></Cart>
+                    }
                 </div>
             </section>
         </>

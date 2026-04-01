@@ -16,6 +16,7 @@ const cardDataLoade = async () => {
 
 export default function App() {
   const cardDataPromise = cardDataLoade();
+
   return (
     <main>
       <Navbar></Navbar>
