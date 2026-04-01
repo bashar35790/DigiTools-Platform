@@ -72,7 +72,10 @@ export default function Navbar() {
             </div>
             {/* end buttons  */}
             <div className="navbar-end gap-4 hidden lg:flex">
+              <div className="w-fit h-fit relative">
               <CiShoppingCart className="text-2xl cursor-pointer" />
+              <span className="badge badge-sm indicator-item absolute -top-4 -right-4 shadow-sm shadow-brand1 text-brand2 hidden">0</span>
+              </div>
               <a className="cursor-pointer">Login</a>
               <Button title="Get Started"></Button>
             </div>
