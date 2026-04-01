@@ -6,6 +6,7 @@ import Products from './component/home-page/Products'
 import Getstart from './component/home-page/Getstart'
 import Pricing from './component/home-page/Pricing'
 import Cta from './component/home-page/Cta'
+import Footer from './component/home-page/Footer'
 
 const cardDataLoade = async () => {
   const res = await fetch("data.json");
@@ -27,6 +28,7 @@ export default function App() {
       <Getstart></Getstart>
       <Pricing></Pricing>
       <Cta></Cta>
+      <Footer></Footer>
     </main>
   )
 }
