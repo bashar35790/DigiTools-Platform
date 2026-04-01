@@ -1,5 +1,5 @@
 
-const Cart = ({ cart, onRemoveFromCart, setActiveView }) => {
+const Cart = ({ cart, onRemoveFromCart, onClearCart, setActiveView }) => {
     const totalPrice = cart.reduce((total, item) => {
         // Robust price parsing
         const priceValue = typeof item.price === 'string'
@@ -82,12 +82,16 @@ const Cart = ({ cart, onRemoveFromCart, setActiveView }) => {
                     <span className="text-gray-500 font-medium">Estimated Total:</span>
                     <span className="text-2xl md:text-3xl font-extrabold">${totalPrice.toFixed(2)}</span>
                 </div>
-                <button className="w-full py-4 rounded-xl md:rounded-2xl cursor-pointer text-white font-bold text-lg bg-linear-to-l from-brand2 to-brand1 hover:shadow-xl hover:shadow-brand1/20 transition-all transform active:scale-[0.98]">
+                <button
+                    onClick={onClearCart}
+                    className="w-full py-4 rounded-xl md:rounded-2xl cursor-pointer text-white font-bold text-lg bg-linear-to-l from-brand2 to-brand1 hover:shadow-xl hover:shadow-brand1/20 transition-all transform active:scale-[0.98]"
+                >
                     Checkout Now
                 </button>
             </div>
         </div>
     );
 };
+
 
 export default Cart;

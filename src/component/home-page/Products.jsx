@@ -10,6 +10,7 @@ export default function Products({
     cart,
     onAddToCart,
     onRemoveFromCart,
+    onClearCart,
     activeView,
     setActiveView
 }) {
@@ -59,7 +60,7 @@ export default function Products({
                             </div>
                         ) : (
                             <div className="max-w-4xl mx-auto">
-                                <Cart cart={cart} onRemoveFromCart={onRemoveFromCart} setActiveView={setActiveView} />
+                                <Cart cart={cart} onRemoveFromCart={onRemoveFromCart} onClearCart={onClearCart} setActiveView={setActiveView} />
                             </div>
                         )}
                     </div>
@@ -68,3 +69,4 @@ export default function Products({
         </>
     )
 }
+

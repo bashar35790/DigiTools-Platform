@@ -7,6 +7,8 @@ import Getstart from './component/home-page/Getstart'
 import Pricing from './component/home-page/Pricing'
 import Cta from './component/home-page/Cta'
 import Footer from './component/home-page/Footer'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const cardDataLoade = async () => {
   const res = await fetch("data.json");
@@ -24,16 +26,29 @@ export default function App() {
     setCart((prevCart) => {
       const existingItem = prevCart.find((item) => item.id === product.id);
       if (existingItem) {
+        toast.success(`Increased ${product.name} quantity in cart!`);
         return prevCart.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         );
       }
+      toast.success(`${product.name} added to cart!`);
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
 
   const handleRemoveFromCart = (productId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== productId));
+    setCart((prevCart) => {
+      const itemToRemove = prevCart.find(item => item.id === productId);
+      if (itemToRemove) {
+        toast.info(`${itemToRemove.name} removed from cart.`);
+      }
+      return prevCart.filter((item) => item.id !== productId);
+    });
+  };
+
+  const handleClearCart = () => {
+    setCart([]);
+    toast.success("Checkout successful! Cart cleared.");
   };
 
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
@@ -53,6 +68,7 @@ export default function App() {
           cart={cart}
           onAddToCart={handleAddToCart}
           onRemoveFromCart={handleRemoveFromCart}
+          onClearCart={handleClearCart}
           activeView={activeView}
           setActiveView={setActiveView}
         />
@@ -65,6 +81,8 @@ export default function App() {
         </>
       )}
       <Footer></Footer>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
     </main>
   )
 }
+
