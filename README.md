@@ -1,16 +1,24 @@
-# React + Vite
+📌 Project Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The A-6 Digital Tools Buying Website is a modern and fully responsive e-commerce web application designed for purchasing premium digital tools and services. This project focuses on delivering a smooth user experience with dynamic interactions, real-time cart management, and clean UI design based on Figma guidelines.
 
-Currently, two official plugins are available:
+Users can explore a variety of digital products, view detailed features, and add items to their cart with instant feedback. The application includes an interactive cart system where users can manage selected products, view total items, and proceed to checkout seamlessly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website emphasizes usability, responsiveness, and performance while following best practices in frontend development. It is built using modern technologies like React.js and Tailwind CSS, ensuring scalability and maintainability.
 
-## React Compiler
+🚀 Key Highlights
+Dynamic product listing using JSON data
+Real-time cart functionality with add/remove features
+Toast notifications for user actions (add, remove, checkout)
+Toggle system between product view and cart view
+Fully responsive design for mobile, tablet, and desktop
+Clean and modern UI following Figma design principles
+🎯 Purpose of the Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project was developed as part of an assignment to demonstrate practical skills in:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Component-based architecture using React
+State management for dynamic UI updates
+Responsive design implementation
+User interaction handling and feedback systems
+Clean code structure and Git version control practices
