@@ -27,20 +27,20 @@ export default function Footer() {
                         <div className="space-y-6">
                             <h6 className="font-bold uppercase tracking-wider text-sm text-gray-300">Services</h6>
                             <ul className="space-y-4 text-gray-400">
-                                <li><a className="hover:text-brand1 transition-colors">Branding</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Design</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Marketing</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Advertisement</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Branding</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Design</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Marketing</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Advertisement</a></li>
                             </ul>
                         </div>
 
                         <div className="space-y-6">
                             <h6 className="font-bold uppercase tracking-wider text-sm text-gray-300">Company</h6>
                             <ul className="space-y-4 text-gray-400">
-                                <li><a className="hover:text-brand1 transition-colors">About us</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Contact</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Jobs</a></li>
-                                <li><a className="hover:text-brand1 transition-colors">Press kit</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">About us</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Contact</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Jobs</a></li>
+                                <li><a className="hover:text-brand1 transition-colors cursor-pointer">Press kit</a></li>
                             </ul>
                         </div>
 
