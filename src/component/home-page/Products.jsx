@@ -1,9 +1,6 @@
-import React, { use, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Product from '../../utility/Product';
 import Cart from '../../utility/Cart';
-
-
-
 
 export default function Products({
     cardDataPromise,
@@ -14,7 +11,20 @@ export default function Products({
     activeView,
     setActiveView
 }) {
-    const cards = use(cardDataPromise);
+    const [cards, setCards] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        cardDataPromise.then(data => {
+            setCards(data);
+            setLoading(false);
+        });
+    }, [cardDataPromise]);
+
+    if (loading) {
+        return <div className="flex justify-center py-20"><span className="loading loading-bars loading-xl"></span></div>;
+    }
+
 
     return (
         <>
@@ -29,13 +39,13 @@ export default function Products({
                         <div className='p-1.5 shadow-sm rounded-full w-fit mx-auto flex items-center bg-gray-100/50 backdrop-blur-sm border border-gray-100'>
                             <button
                                 onClick={() => setActiveView("available")}
-                                className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${activeView === "available" ? "bg-white text-brand1 shadow-md" : "text-gray-500 hover:text-brand1"}`}
+                                className={` cursor-pointer px-6 py-2.5 rounded-full font-semibold transition-all duration-300 ${activeView === "available" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : "text-gray-500 hover:text-brand1"}`}
                             >
                                 All Products
                             </button>
                             <button
                                 onClick={() => setActiveView("cart")}
-                                className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeView === "cart" ? "bg-white text-brand1 shadow-md" : "text-gray-500 hover:text-brand1"}`}
+                                className={` cursor-pointer px-6 py-2.5 rounded-full font-semibold transition-all duration-300 flex items-center gap-2 ${activeView === "cart" ? "bg-linear-to-l from-brand2 to-brand1 text-white" : "text-gray-500 hover:text-brand1"}`}
                             >
                                 Cart {cart.length > 0 && <span className="bg-brand1 text-white text-[10px] h-5 w-5 rounded-full flex items-center justify-center">{cart.length}</span>}
                             </button>

@@ -72,10 +72,10 @@ export default function Pricing() {
                         {
                             PricingData.map(card => {
                                 return (
-                                    <div className={`card overflow-hidden transition-all duration-300 hover:shadow-xl ${card.tag ? "bg-linear-to-br from-brand1 to-brand2 text-white scale-105 z-10 shadow-xl" : "bg-[#F9FAFC] text-heading border border-gray-100"}`} key={card.id}>
+                                    <div className={`card overflow-visible transition-all duration-300 hover:shadow-xl ${card.tag ? "bg-linear-to-br from-brand1 to-brand2 text-white scale-105 z-10 shadow-xl" : "bg-[#F9FAFC] text-heading border border-gray-100"}`} key={card.id}>
                                         <div className="card-body relative p-8 lg:p-10 space-y-6 flex flex-col justify-between h-full">
                                             {card.tag && (
-                                                <span className="absolute top-4 right-4 bg-white/20 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20">
+                                                <span className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 bg-[#FEF3C6] backdrop-blur-md text-[#BB4D00] text-xs font-bold px-3 py-1 rounded-full border border-white/20">
                                                     {card.tag}
                                                 </span>
                                             )}

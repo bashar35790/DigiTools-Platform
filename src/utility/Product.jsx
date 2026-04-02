@@ -7,20 +7,12 @@ export default function Product({ card, count, onAddToCart }) {
     const handleBuyNow = () => {
         setActive(true);
         onAddToCart();
-        // Reset "Added" state after a short delay for better UX
-        setTimeout(() => setActive(false), 2000);
     };
 
     return (
         <>
             <div className="card bg-white shadow-sm hover:shadow-2xl transition-all duration-500 group border border-gray-100/50 rounded-2xl overflow-hidden flex flex-col h-full">
                 <div className="card-body p-6 lg:p-8 flex flex-col justify-between h-full relative">
-                    {/* Count Badge */}
-                    {count > 0 && (
-                        <div className="absolute -top-3 -left-3 bg-brand2 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-xl z-20 animate-scale-in border-4 border-white">
-                            {count}
-                        </div>
-                    )}
 
                     {/* Tag Badge */}
                     <div className="absolute top-4 right-4 z-10">
@@ -73,6 +65,7 @@ export default function Product({ card, count, onAddToCart }) {
                             title="Add to Cart"
                             title2="Added to Cart"
                             addStyle="w-full py-4 font-bold"
+                            disable= {active}
                         />
                     </div>
                 </div>

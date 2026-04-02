@@ -1,13 +1,14 @@
 
 
-export default function Button({ title, addStyle, title2, active, onClick }) {
+export default function Button({ title, addStyle, title2, active, onClick, disable }) {
     return (
         <>
             <button
                 onClick={onClick}
+                disabled={disable}   // ✅ এখানে ঠিক করো
                 className={`btn rounded-full text-white border-none
-                            transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95
-                ${active ? "bg-success scale-105 shadow-md"
+                        transition-all duration-300 ease-in-out transform hover:scale-105 active:scale-95
+                        ${active ? "bg-success scale-105 shadow-md cursor-not-allowed opacity-70"
                         : "bg-linear-to-l from-brand2 to-brand1 hover:shadow-lg shadow-brand1/20"
                     } ${addStyle}`}
             >

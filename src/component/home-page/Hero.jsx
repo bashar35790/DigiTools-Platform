@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <>
       <div className="hero min-h-[80vh] lg:min-h-screen bg-linear-to-b from-base-100 to-gray-50/30">
-        <div className="container mx-auto px-6 py-12 lg:py-20 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-20">
+        <div className="container mx-auto px-6 py-12 lg:py-20 flex flex-col-reverse lg:flex-row-reverse items-center justify-between gap-12 lg:gap-20">
           {/* Hero Image */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
             <div className="relative group">
@@ -27,7 +27,7 @@ export default function Hero() {
               New: AI-Powered Tools Available
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-heading leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-5xl font-extrabold text-heading leading-tight tracking-tight">
               Supercharge Your <br className="hidden md:block" />
               <span className="bg-linear-to-r from-brand1 to-brand2 text-transparent bg-clip-text">Digital Workflow</span>
             </h1>
@@ -39,9 +39,9 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-              <Button title="Explore Products" addStyle="px-8 py-4 text-lg"></Button>
-              <button className="flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold rounded-full border-2 border-gray-200 hover:border-brand1 hover:bg-gray-50 transition-all group">
-                <img src={PlayIcon} alt="play icon" className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <Button title="Explore Products" addStyle="px-4 py-2"></Button>
+              <button className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border-2 border-gray-200 hover:border-brand1 hover:bg-gray-50 transition-all group">
+                <img src={PlayIcon} alt="play icon" className="w-3 h-3 group-hover:scale-110 transition-transform" />
                 Watch Demo
               </button>
             </div>
